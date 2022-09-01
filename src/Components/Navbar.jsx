@@ -33,7 +33,7 @@ export default function Navbar({ count, page, userInfo }) {
                         <li><Link className={page === 'Home' ? 'current' : ''} to="/">Home</Link></li>
                         <li><Link className={page === 'Shop' ? 'current' : ''} to="/Shop">Shop</Link></li>
                         <li><Link className={page === 'Gallery' ? 'current' : ''} to="/Gallery">Gallery</Link></li>
-                        <li><Link className={page === 'About' ? 'current' : ''} to="/">About Us</Link></li>
+                        <li><Link className={page === 'About' ? 'current' : ''} to="/About">About Us</Link></li>
                         <li><Link className={page === 'Contact' ? 'current' : ''} to="/">Contact</Link></li>
                     </ul>
                 </div>

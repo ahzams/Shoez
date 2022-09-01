@@ -3,7 +3,7 @@ import img1 from "../assets/img1.png"
 import Footer from './Footer'
 import Navbar from './Navbar'
 
-export default function Gallery({ page, setPage , userInfo}) {
+export default function Gallery({ page, count, setPage , userInfo}) {
 
     useEffect(() => {
         setPage('Gallery')
@@ -11,7 +11,7 @@ export default function Gallery({ page, setPage , userInfo}) {
 
     return (
         <div>
-            <Navbar page={page} userInfo={userInfo} />
+            <Navbar page={page} count={count} userInfo={userInfo} />
             <section id="gallery">
                 <div className="h-primary">
                     <h1 className="h-style f-weight">Gallery</h1>

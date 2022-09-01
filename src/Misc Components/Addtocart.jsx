@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { database } from '../firebaseConfig'
 import Cart from './Cart'
 
-export default function Addtocart({userInfo, count, setCount}) {
+export default function Addtocart({ userInfo, count, setCount }) {
 
     const navigate = useNavigate()
     const [cartItems, setCartItems] = useState([])
@@ -37,14 +37,14 @@ export default function Addtocart({userInfo, count, setCount}) {
 
     return (
         <div className='cart-container'>
-            <div className='back' onClick={() => navigate(-1)}>
-                <span className="material-symbols-outlined">
+            <div className='back'>
+                <span className="material-symbols-outlined"  onClick={() => navigate(-1)}>
                     keyboard_backspace
                 </span>
+                <h2>Cart</h2>
             </div>
             <div className='addLeft'>
                 <div>
-                    <h2>Cart</h2>
                     {
                         cartItems && cartItems.map((element, i) => {
                             return <Cart userInfo={userInfo} key={i} id={element.shoeid} count={count} setCount={setCount} imageUrl={element.imageurl} shoename={element.shoename} price={element.price} setChange={setChange} change={change} />

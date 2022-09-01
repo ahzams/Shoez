@@ -9,6 +9,7 @@ import Description from './Misc Components/Description';
 import Addtocart from './Misc Components/Addtocart';
 import { database } from './firebaseConfig'
 import { collection, getDocs } from "firebase/firestore";
+import About from './Components/About';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
         <Route exact path="/Desc/:id" element={<Description userInfo={userInfo} count={count} setCount={setCount} page={page} />} />
         <Route exact path="/Cart" element={<Addtocart userInfo={userInfo} count={count} setCount={setCount} />} />
         <Route exact path="/Gallery" element={<Gallery count={count} userInfo={userInfo} page={page} setPage={setPage} />} />
+        <Route exact path="/About" element={<About count={count} userInfo={userInfo} page={page} setPage={setPage} />} />
       </Routes>
     </BrowserRouter>
   );
