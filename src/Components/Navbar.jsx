@@ -38,7 +38,7 @@ export default function Navbar({ count, page, userInfo }) {
                     </ul>
                 </div>
                 <div className="icons">
-                    <div style={{ display: "flex", alignItems: "center" }} onClick={() => navigate("/Login")}><span className="material-icons">account_circle</span>{userInfo ? userInfo.username : "SIGN IN"}</div>
+                    <div style={{ display: "flex", alignItems: "center" }} onClick={() => navigate("/Login")}><i className="fas fa-user-circle" style={{fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px"}}></i>{userInfo ? userInfo.username : "SIGN IN"}</div>
                     <div onClick={() => navigate("/Cart")}>
                         <span className='cart'>{count}</span>
                         <i className='fas fa-shopping-cart' style={{ fontSize: "1.9em", marginLeft: "15px" }}></i><span style={{ position: "relative", left: "-6px" }}>Cart</span>

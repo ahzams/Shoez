@@ -39,15 +39,6 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className="footer-box">
-                        <div className="h-secondary">
-                            Subscribe
-                        </div>
-                        <div className="subscribe">
-                            <input type="email" name="" id="" placeholder="Your Email" className="input-field" /><i
-                                className="fa fa-send"></i>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>

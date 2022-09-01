@@ -13,7 +13,7 @@ export default function Hero() {
                     </div>
                     {/*eslint-disable-next-line*/}
 
-                    <h2 style={{padding: '10px 0px', fontSize: '3.125em'}} className="f-weight">Nike Air with <span
+                    <h2 style={{padding: '10px 0px', fontSize: '3.125em'}} className="f-weight">Nike Air Max with <span
                         className="span-style">30%</span> discount!
                     </h2>
                     {/*eslint-disable-next-line*/}

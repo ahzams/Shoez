@@ -12,6 +12,19 @@
   margin: 0;
 }
 
+.scrollWidth::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollWidth {
+  overflow-y: scroll; 
+}
+
+.scrollWidth:hover::-webkit-scrollbar-thumb{
+  background-color: #aba7a7;
+  border-radius: 5px;
+}
+
 /* Navigation Bar */
 
 .nav-Section {
@@ -123,7 +136,7 @@
 
 #inside-content {
   display: flex;
-  height: 830px;
+  height: 771px;
   color: white;
   padding: 91px 0;
 }
@@ -479,16 +492,6 @@
   margin: 15px 0;
 }
 
-.subscribe {
-  display: flex;
-  align-items: center;
-  min-width: 300px;
-  border-radius: 5px;
-  border: 1px solid white;
-  padding: 10px;
-  margin: 20px 0;
-}
-
 .input-field {
   margin: 10px 0;
   padding: 0 5px;
@@ -499,16 +502,6 @@
   border: none;
   outline: none;
 }
-
-.subscribe .fa {
-  font-size: 1.2em;
-}
-
-#footer .fa-send:hover {
-  color: #f75b5b;
-  cursor: pointer;
-}
-
 
 /* Utility classes */
 
@@ -616,17 +609,60 @@
 
 #shop-items {
   display: flex;
-  margin: 50px 40px;
+  position: relative;
+  margin: 60px 40px;
+}
+
+.search-bar {
+  position: absolute;
+  right: 6%;
+  top: -38px;
+  width: 20.5%;
+  /* border: 1px solid rgba(128, 128, 128, 0.539); */
+  border-radius: 10px;
+  padding: 3px;
+  display: flex;
+}
+
+.search-bar input {
+  padding: 8px 8px 8px 14px;
+  width: 100%;
+  border: 0.5px solid;
+  /* border-color: rgba(0, 0, 0, 0.444); */
+  border: none;
+  outline: none;
+  /* border: none; */
+  background-color: #f6f6f6;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  font-size: 1.1em;
+}
+
+.search-btn {
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  background-color: #181a1be0;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.search-btn:hover {
+  background-color: black;
 }
 
 .section1 {
-  min-width: 15%;
+  min-width: 18%;
   display: flex;
   flex-direction: column;
-  padding: 5px;
-  height: 25rem;
+  padding: 5px 5px 5px 0;
+  height: 90vh;
   position: sticky;
-  top: 10rem;
+  top: 7rem;
 }
 
 hr {
@@ -634,41 +670,68 @@ hr {
   opacity: 0.3;
 }
 
-.price-slider {
+.price-input{
+  display: flex;
+  align-items: center;
   margin: 5px 0;
-  height: 8px;
-  border-radius: 5px;
-  background-color: #ddd;
-  position: relative;
 }
 
-.price-slider input {
-  height: 8px;
-  width: 100%;
-  color: #f75b5b;
-  position: absolute;
+.price-filter{
+  display: flex;
+  flex-direction: column;
 }
+
+.price-filter input, .links input {
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  outline: none;
+  margin-right: 8px;
+}
+
+/* .price-filter-btn {
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: none;
+  background-color: #f75b5b;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.price-filter-btn:hover {
+  background-color: black;
+} */
 
 .filter-btn {
   display: flex;
   justify-content: center;
+  width: 90%;
 }
 
-.filter-btn button {
+.filter-btn .btn {
   display: flex;
   justify-content: center;
   margin: 0;
   width: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.filter-btn .btn:hover {
+  background-color: black;
 }
 
 .filter-btn span {
   font-size: 15px;
 }
 
-.filter-color {
+.collection {
   display: flex;
   flex-direction: column;
 }
+
 
 .links {
   display: flex;
@@ -676,33 +739,42 @@ hr {
   margin: 10px 0;
 }
 
-.links li {
-  margin: 5px 0;
+.links li, .price-input li {
   list-style: none;
   cursor: pointer;
   color: rgb(42, 76, 128);
   transition: 0.3s;
 }
 
-#b:hover {
-  color: rgb(10, 3, 3);
-}
-
-#bl:hover {
-  color: rgb(74, 129, 211);
-}
-
-#g:hover {
-  color: gray;
-}
-
-#r:hover {
-  color: #f75b5b;
-}
-
 .filter-size {
   display: flex;
   flex-direction: column;
+}
+
+.color-type {
+  height: 35px;
+  width: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.363);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.colors {
+  margin: 5px 8px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colors h6 {
+  margin: 2px 0;
+  font-weight: 500;
+}
+
+.color-box {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .section2 {

@@ -12,7 +12,7 @@ export default function Cart({ id, userInfo, change, setChange, count, setCount,
   const updateQuantity = async () => {
     const q = query(
       collection(database, cartName),
-      where(cartName.shoeid, "==", id)
+      where("cart.shoeid", "==", id)
     );
 
     const querySnapshot = await getDocs(q);
@@ -31,7 +31,7 @@ export default function Cart({ id, userInfo, change, setChange, count, setCount,
   const handleQuantity = async () => {
     const q = query(
       collection(database, cartName),
-      where(cartName.shoeid, "==", id)
+      where("cart.shoeid", "==", id)
     );
 
     const querySnapshot = await getDocs(q);
@@ -46,7 +46,7 @@ export default function Cart({ id, userInfo, change, setChange, count, setCount,
   const handleRemove = async () => {
     const q = query(
       collection(database, cartName),
-      where(cartName.shoeid, "==", id)
+      where("cart.shoeid", "==", id)
     );
 
     const querySnapshot = await getDocs(q);

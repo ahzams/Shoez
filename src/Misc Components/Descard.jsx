@@ -23,7 +23,7 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
     const handleRemove = async () => {
         const q = query(
             collection(database, cartName),
-            where(cartName.shoeid, "==", id)
+            where("cart.shoeid", "==", id)
         );
 
         const querySnapshot = await getDocs(q);
@@ -40,7 +40,7 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
     const updateQuantity = async () => {
         const q = query(
             collection(database, cartName),
-            where(cartName.shoeid, "==", id)
+            where("cart.shoeid", "==", id)
         );
 
         const querySnapshot = await getDocs(q);
@@ -58,7 +58,7 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
     const handleQuantity = async()=>{
         const q = query(
           collection(database, cartName),
-          where(cartName.shoeid, "==", id)
+          where("cart.shoeid", "==", id)
         ); 
      
          const querySnapshot = await getDocs(q);
