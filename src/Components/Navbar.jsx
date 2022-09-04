@@ -1,24 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/Shoez-logos_white.png'
 import { Link, useNavigate } from "react-router-dom"
 
 export default function Navbar({ count, page, userInfo }) {
 
     const navigate = useNavigate()
+    const [isOpen, setIsOpen] = useState(false)
+    const [line1, setLine1] = useState(`line`)
+    const [line2, setLine2] = useState(`line`)
 
     window.onscroll = function () { scrollFunction() };
 
     const scrollFunction = () => {
         if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
-            document.getElementById("header").style.width = "85vw";
-            document.getElementById("header").style.borderRadius = "50px";
-            document.getElementById("header").style.top = "8px";
+            if (window.innerWidth > 1290) {
+                document.getElementById("header").style.width = "85vw";
+                document.getElementById("header").style.borderRadius = "50px";
+                document.getElementById("header").style.top = "8px";
+            }
         }
         else {
             document.getElementById("header").style.width = "100vw";
             document.getElementById("header").style.borderRadius = "0px";
             document.getElementById("header").style.top = "0px";
         }
+
+    }
+
+    const handleLines = () => {
+        return (!isOpen ?
+            (
+                setLine1(`lineOne`),
+                setLine2(`lineTwo`),
+                setIsOpen(!isOpen)
+            ) :
+            (
+                setLine1(`line`),
+                setLine2(`line`),
+                setIsOpen(!isOpen)
+            )
+        )
     }
 
     return (
@@ -27,28 +48,29 @@ export default function Navbar({ count, page, userInfo }) {
                 <div className="logo">
                     <img onClick={() => { navigate("/") }} src={logo} alt="" />
                 </div>
-                <div className="nav-list">
-                    <span className="material-icons close">close</span>
-                    <ul>
-                        <li><Link className={page === 'Home' ? 'current' : ''} to="/">Home</Link></li>
-                        <li><Link className={page === 'Shop' ? 'current' : ''} to="/Shop">Shop</Link></li>
-                        <li><Link className={page === 'Gallery' ? 'current' : ''} to="/Gallery">Gallery</Link></li>
-                        <li><Link className={page === 'About' ? 'current' : ''} to="/About">About Us</Link></li>
-                        <li><Link className={page === 'Contact' ? 'current' : ''} to="/">Contact</Link></li>
-                    </ul>
-                </div>
-                <div className="icons">
-                    <div style={{ display: "flex", alignItems: "center" }} onClick={() => navigate("/Login")}><i className="fas fa-user-circle" style={{fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px"}}></i>{userInfo ? userInfo.username : "SIGN IN"}</div>
-                    <div onClick={() => navigate("/Cart")}>
-                        <span className='cart'>{count}</span>
-                        <i className='fas fa-shopping-cart' style={{ fontSize: "1.9em", marginLeft: "15px" }}></i><span style={{ position: "relative", left: "-6px" }}>Cart</span>
+                <div className={`menu ${isOpen ? "move" : "move2"}`}>
+
+                    <div className="nav-List">
+                        <ul>
+                            <li><Link className={page === 'Home' ? 'current' : ''} to="/">Home</Link></li>
+                            <li><Link className={page === 'Shop' ? 'current' : ''} to="/Shop">Shop</Link></li>
+                            <li><Link className={page === 'Gallery' ? 'current' : ''} to="/Gallery">Gallery</Link></li>
+                            <li><Link className={page === 'About' ? 'current' : ''} to="/About">About Us</Link></li>
+                            <li><Link className={page === 'Contact' ? 'current' : ''} to="/">Contact</Link></li>
+                        </ul>
+                    </div>
+                    <div className="icons nav-List">
+                        <div style={{ display: "flex", alignItems: "center" }} onClick={() => navigate("/Login")}><i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>{userInfo ? userInfo.username : "SIGN IN"}</div>
+                        <div className='cart-div' onClick={() => navigate("/Cart")}>
+                            <span className='cart'>{count}</span>
+                            <i className='fas fa-shopping-cart' style={{ fontSize: "1.9em", marginLeft: "15px" }}></i><span style={{ position: "relative", left: "-6px" }}>Cart</span>
+                        </div>
                     </div>
                 </div>
-                {/* <div className="hamburger">
-                    <div className="line"></div>
-                    <div className="line"></div>
-                    <div className="line"></div>
-                </div> */}
+                <div className="hamburger" onClick={handleLines}>
+                    <div className={line1}></div>
+                    <div className={line2}></div>
+                </div>
             </nav>
         </div>
     )

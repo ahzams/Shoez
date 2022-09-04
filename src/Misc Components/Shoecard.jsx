@@ -12,7 +12,7 @@ export default function Shoecard({name, price, imageUrl, id}) {
             </div>
 
             <div className="items">
-                <h5 className="f-weight space2">Gym & Training, Lifestyle, Running, Basketball</h5>
+                <h5 className="f-weight space2">Men's Shoes</h5>
                 <h3 className="f-weight">{name}</h3>
                 <div className="rating space2">
                     <span className="material-icons-outlined">star</span>
