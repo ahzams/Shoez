@@ -791,7 +791,7 @@ hr {
 .color-type {
   height: 35px;
   width: 35px;
-  border: 1px solid rgba(0, 0, 0, 0.363);
+  border: 1px solid rgba(0, 0, 0, 0.243);
   border-radius: 20px;
   cursor: pointer;
 }
@@ -1339,13 +1339,18 @@ img {
 .top img {
   height: auto;
   max-width: 100%;
+  transition: 0.6s ease-in-out;
 }
 
+/* .top img:hover {
+  transform: scale(1.5);
+} */
+
 .right-container {
-  height: 55rem;
-  /* position: sticky; */
-  /* top: 10rem; */
-  /* margin: 10px 0px; */
+  height: 38rem;
+  position: sticky;
+  top: 8rem;
+  margin: 10px 0px;
 }
 
 .text {
@@ -1505,11 +1510,6 @@ img {
 
 .cartLeft {
   width: 35%;
-}
-
-.left-container img {
-  height: auto;
-  max-width: 100%;
 }
 
 .cart-head {
@@ -1708,6 +1708,30 @@ img {
   }
 }
 
+@media only screen and (max-width: 1053px) {
+  #shop-products {
+    flex-direction: column;
+    margin: 150px 0px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .left-container {
+    justify-content: center;
+  }
+
+  .top {
+    flex: 0 0 33%;
+  }
+
+  .right-container{
+    margin: 30px 0;
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 @media only screen and (max-width: 1050px) {
 
   .navbar {
@@ -1836,6 +1860,15 @@ img {
   .move3 {
     display: flex;
   }
+
+  #shop-products {
+    margin: 150px 50px;
+    margin-bottom: 0;
+  }
+
+  .top {
+    flex: 0 0 40%;
+  }
 }
 
 
@@ -1959,6 +1992,10 @@ img {
 @media only screen and (max-width: 803px) {
   .colors {
     width: 30.5%;
+  }
+
+  .top {
+    flex: 0 0 45%;
   }
 }
 
@@ -2165,6 +2202,10 @@ img {
   .card {
     flex: 0 0 85%;
   }
+
+  .top {
+    flex: 0 0 90%;
+  }
 }
 
 
@@ -2256,6 +2297,24 @@ img {
 
 @media only screen and (max-width: 397px) {
   
+  .navbar ul {
+    font-size: 25px;
+  }
+
+  .icons {
+    font-size: 25px;
+  }
+
+  .icons div {
+    padding: 20px 0;
+  }
+
+  .cart {
+    font-size: 18px;
+    left: 65px;
+    top: -17px;
+  }
+
   #inside-content {
     height: 615px;
   }
@@ -2339,23 +2398,6 @@ img {
 }
 
 @media only screen and (max-width: 353px) {
-  .navbar ul {
-    font-size: 25px;
-  }
-
-  .icons {
-    font-size: 25px;
-  }
-
-  .icons div {
-    padding: 20px 0;
-  }
-
-  .cart {
-    font-size: 18px;
-    left: 65px;
-    top: -17px;
-  }
 
   .nav-list {
     width: 100%;

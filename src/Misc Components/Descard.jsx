@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { database } from '../firebaseConfig'
 import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import ReactImageZoom from 'react-image-zoom';
 
-export default function Descard({userInfo, imageArray, shoename, id, count, setCount }) {
+export default function Descard({ userInfo, imageArray, shoename, id, count, setCount }) {
 
     const navigate = useNavigate()
     const [size, setSize] = useState([])
@@ -55,21 +56,21 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
         });
     }
 
-    const handleQuantity = async()=>{
+    const handleQuantity = async () => {
         const q = query(
-          collection(database, cartName),
-          where("cart.shoeid", "==", id)
-        ); 
-     
-         const querySnapshot = await getDocs(q);
-         console.log(querySnapshot._snapshot.docChanges.length);
-         if (querySnapshot._snapshot.docChanges.length!=0) {
-           setPresent(true);
-           querySnapshot.forEach((doc) => {
-             setQuantity(doc.data().quantity);
-           });
-         }        
-     }
+            collection(database, cartName),
+            where("cart.shoeid", "==", id)
+        );
+
+        const querySnapshot = await getDocs(q);
+        console.log(querySnapshot._snapshot.docChanges.length);
+        if (querySnapshot._snapshot.docChanges.length != 0) {
+            setPresent(true);
+            querySnapshot.forEach((doc) => {
+                setQuantity(doc.data().quantity);
+            });
+        }
+    }
 
     const handleAdd = async () => {
         const q = query(
@@ -90,9 +91,9 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
         // console.log(price1);
         const collectionref = collection(database, cartName);
         addDoc(collectionref, {
-          cart,
-          quantity: Number(quantity),
-          price: Number(price1),
+            cart,
+            quantity: Number(quantity),
+            price: Number(price1),
         }).then(() => {
             alert("data added");
         }).catch((err) => {
@@ -109,7 +110,7 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
         handleAdd()
     }, [])
 
-    useEffect(() =>{
+    useEffect(() => {
         updateQuantity()
     }, [quantity])
 
@@ -119,25 +120,30 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
                 <div className="left-container">
                     {
                         imageArray.map((item, i) => {
-                            return <div key={i} className="top"><img id="topimg1" src={item} alt="" /></div>
+                            return (
+                                <div key={i} className="top">
+                                    <img src={item} alt="" />
+                                </div>
+                            )
                         })
                     }
                 </div>
                 <div className="right-container">
                     <div className="description">
                         <h2 className="f-weight h-style">{shoename}</h2>
-                        <div className="rating space2">
+                        {/* <div className="rating space2">
                             <span className="material-icons-outlined">star</span>
                             <span className="material-icons-outlined">star</span>
                             <span className="material-icons-outlined">star</span>
                             <span className="material-icons-outlined">star</span>
                             <span className="material-icons-outlined">star</span>
-                        </div>
+                        </div> */}
                         <h2 className="price">&#8377; 9,930.00</h2>
-                        <div className="text space2 f-style f-weight">If you are in a search of fine shoes which would meet your
+                        {/* <div className="text space2 f-style f-weight">If you are in a search of fine shoes which would meet your
                             design
                             and functional requirements, and meanwhile you are willing to save your time, an online store is
-                            a perfect option for you.</div>
+                            a perfect option for you.
+                        </div> */}
 
                         <div className="quantity">
                             <h3>Select Size</h3>
@@ -152,11 +158,11 @@ export default function Descard({userInfo, imageArray, shoename, id, count, setC
 
                         <div className="quantity">
                             <h4>Quantity</h4>
-                            <input type="number" value={quantity} onChange={(e)=>setQuantity(e.target.value)} />
+                            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                         </div>
                         <div className="input-btns">
                             <button className="btn" style={{ marginBottom: '5px' }}>Buy Now</button>
-                            <button className="btn" style={{ backgroundColor: "black" }} onClick={present? handleRemove:handleData}>{present? "Remove from Cart":"Add to Cart"}<i className="fas fa-shopping-cart"></i></button>
+                            <button className="btn" style={{ backgroundColor: "black" }} onClick={present ? handleRemove : handleData}>{present ? "Remove from Cart" : "Add to Cart"}<i className="fas fa-shopping-cart"></i></button>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { database } from '../firebaseConfig';
 import Shoecard from './Shoecard'
+import multi from '../assets/multicolor.png'
 
 export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce }) {
 
@@ -175,6 +176,10 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                                         <div className='colors'>
                                             <div className="color-type" style={{ backgroundColor: "yellow" }}></div>
                                             <h6>Yellow</h6>
+                                        </div>
+                                        <div className='colors'>
+                                            <img src={multi} className="color-type" style={{height: "auto", width: "35px", borderRadius: "0", border: "none"}} />
+                                            <h6>Multi-Color</h6>
                                         </div>
                                     </div>
                                 </div>
