@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 export default function Navbar({ count, page, userInfo }) {
 
     const navigate = useNavigate()
+    const [isHover, setIsHover] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [line1, setLine1] = useState(`line`)
     const [line2, setLine2] = useState(`line`)
@@ -60,7 +61,15 @@ export default function Navbar({ count, page, userInfo }) {
                         </ul>
                     </div>
                     <div className="icons nav-List">
-                        <div style={{ display: "flex", alignItems: "center" }} onClick={() => navigate("/Login")}><i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>{userInfo ? userInfo.username : "SIGN IN"}</div>
+                        <div style={{ display: "flex", alignItems: "center", transition: "0.3s ease-in-out" }} onClick={() => navigate("/Login")} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+                            <i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>
+                            {userInfo ? userInfo.username : "SIGN IN"}
+                        </div>
+                        <div className={`log-menu ${isHover ? "menu" : "disp"}`}>
+                            <button className='btn'>Login/Register</button>
+                            <div>OR</div>
+                            <button className='btn'>Guest Login</button>
+                        </div>
                         <div className='cart-div' onClick={() => navigate("/Cart")}>
                             <span className='cart'>{count}</span>
                             <i className='fas fa-shopping-cart' style={{ fontSize: "1.9em", marginLeft: "15px" }}></i><span style={{ position: "relative", left: "-6px" }}>Cart</span>

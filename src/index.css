@@ -41,7 +41,7 @@
   min-height: 8vh;
   padding: 0 10px;
   /* background-image: linear-gradient(to right, #000000, #2a0606, #000000); */
-  background-color: black;
+  background-color: #181a1b;
   position: fixed;
   width: 100vw;
   top: 0px;
@@ -99,7 +99,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
-  /* margin: 0 42px; */
+  margin-left: 82px;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -110,6 +110,36 @@
 
 .icons span {
   padding: 0 5px;
+}
+
+.log-menu{
+  position: absolute;
+  top: 4.2rem;
+  right: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: black;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 8px 15px;
+  transition: 0.3s ease-in-out;
+}
+
+.log-menu::before{
+  content: "";
+  position: absolute;
+  background-color: black;
+  top: 34%;
+  right: 12%;
+  width: 100%;
+  height: 10px;
+  transform: rotate(-45deg);
+  z-index: -1;
+}
+
+.log-menu .btn{
+  margin: 10px 0;
 }
 
 .cart {
@@ -187,7 +217,8 @@
 
 .left-box {
   position: relative;
-  
+  left: 6rem;
+  top: 8rem;
 }
 
 .buttons {
@@ -1323,7 +1354,7 @@ form h1 {
   /* margin: 10px; */
 }
 
-.appear {
+.left .appear {
   margin: 20px;
 }
 
@@ -1512,6 +1543,11 @@ img {
   width: 35%;
 }
 
+.cartLeft img {
+  height: auto;
+  max-width: 100%;
+}
+
 .cart-head {
   display: flex;
   align-items: center;
@@ -1609,6 +1645,7 @@ img {
   width: 100%;
   padding: 20px 0;
   font-size: 1.1em;
+  border-radius: 50px;
 }
 
 /* About us */
@@ -1655,11 +1692,21 @@ img {
 }
 
 /* Responsive */
-@media only screen and (min-width: 1363px) {
+@media only screen and (max-width: 1448px) {
+  .cart-container {
+    margin: 120px 80px;
+  }
+}
+
+@media only screen and (max-width: 1363px) {
   .left-box {
     position: relative;
     left: 5rem;
     top: 8rem;
+  }
+
+  .cart-container {
+    margin: 120px 50px;
   }
 }
 
@@ -1682,31 +1729,65 @@ img {
   }
 }
 
+@media only screen and (max-width: 1288px) {
+  .cart-container {
+    flex-direction: column;
+  }
+
+  .addLeft {
+    margin: 0;
+  }
+
+  .addRight {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+
+  .summary-btns {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+
+  .summary {
+    padding-bottom: 90px;
+  }
+}
+
 @media only screen and (max-width: 1219px) {
-  .colors{
+  .colors {
     width: 24%;
   }
 
   .items {
     text-align: center;
   }
-} 
+}
 
 @media only screen and (max-width: 1185px) {
   #inside-content {
     height: 648px;
   }
 
-  .colors{
+  .colors {
     width: 22%;
   }
-}
 
-@media only screen and (max-width: 1083px) {
+  .icons {
+    margin-left: 32px;
+  }
+
   .navbar {
     font-size: 13px;
   }
 }
+
+@media only screen and (max-width: 1083px) {}
 
 @media only screen and (max-width: 1053px) {
   #shop-products {
@@ -1724,7 +1805,7 @@ img {
     flex: 0 0 33%;
   }
 
-  .right-container{
+  .right-container {
     margin: 30px 0;
     position: static;
     display: flex;
@@ -1816,9 +1897,9 @@ img {
     position: static;
   }
 
-  .section-container{
+  .section-container {
     flex-direction: column;
-  } 
+  }
 
   .section1 {
     position: static;
@@ -1853,7 +1934,7 @@ img {
     margin-right: 2px;
   }
 
-  .colors{
+  .colors {
     width: 31%;
   }
 
@@ -1887,11 +1968,12 @@ img {
     z-index: 999;
   }
 
-  .nav-List ul, .nav-List {
+  .nav-List ul,
+  .nav-List {
     flex-direction: column;
   }
 
-  .nav-List ul li{
+  .nav-List ul li {
     padding: 20px;
     justify-content: center;
   }
@@ -1901,7 +1983,7 @@ img {
     top: 15%;
   }
 
-  .icons div{
+  .icons div {
     padding: 20px;
   }
 
@@ -1929,12 +2011,12 @@ img {
     height: 100%;
     transition: 0.5s ease-in-out;
   }
-  
+
   .move {
     transform: translateY(0);
   }
 
-  .move2{
+  .move2 {
     transform: translateY(-100%);
   }
 
@@ -2240,15 +2322,15 @@ img {
 }
 
 @media only screen and (max-width: 450px) {
-  .colors{
+  .colors {
     width: 28%;
   }
 }
 
 @media only screen and (max-width: 444px) {
-#inside-content {
-  height: 635px;
-}
+  #inside-content {
+    height: 635px;
+  }
 
   .logo img {
     width: 90px;
@@ -2290,13 +2372,13 @@ img {
 }
 
 @media only screen and (max-width: 417px) {
-  .colors{
+  .colors {
     width: 26.5%;
   }
 }
 
 @media only screen and (max-width: 397px) {
-  
+
   .navbar ul {
     font-size: 25px;
   }
@@ -2423,7 +2505,7 @@ img {
     top: -9rem;
   }
 
-  .colors{
+  .colors {
     width: 26%;
   }
 

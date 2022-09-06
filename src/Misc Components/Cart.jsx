@@ -69,7 +69,7 @@ export default function Cart({ id, userInfo, change, setChange, count, setCount,
   }, [quantity])
 
   return (
-    <div className='left-container'>
+    <div>
       <div className='left-sub'>
         <div className='cartLeft'>
           <img src={imageUrl} alt="" />
