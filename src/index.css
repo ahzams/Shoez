@@ -1738,6 +1738,10 @@ img {
   .right-box img {
     top: -280px;
   }
+
+  .signin-signup {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 1288px) {
@@ -1828,6 +1832,14 @@ img {
 
   .logo img {
     width: 80px;
+  }
+
+  .signup-logo {
+    padding: 0;
+  }
+
+  .signup-logo img {
+    width: 142px;
   }
 
   #inside-content {
@@ -2040,6 +2052,15 @@ img {
     padding: 5px;
   }
 
+  .signup-logo{
+    margin-left: 0;
+  }
+
+  .signup-logo img {
+    width: 142px;
+    padding: 0;
+  }
+
   #inside-content {
     height: 520px;
   }
@@ -2062,6 +2083,10 @@ img {
     top: -250px;
     width: 90%;
     right: 2rem;
+  }
+
+  .signin-signup {
+    width: 70%;
   }
 
   .bg {
@@ -2100,6 +2125,10 @@ img {
 @media only screen and (max-width: 798px) {
   .logo {
     margin-left: 50px;
+  }
+
+  .signup-logo{
+    margin-left: 0;
   }
 
   #inside-content {
@@ -2231,6 +2260,15 @@ img {
   .card {
     flex: 0 0 45%;
   }
+
+  .signin-signup {
+    width: 80%;
+  }
+
+  .form-container {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @media only screen and (max-width: 537px) {
@@ -2255,6 +2293,14 @@ img {
 
   .logo img {
     width: 90px;
+  }
+
+  .signup-logo{
+    margin-left: 0;
+  }
+
+  .signup-logo img {
+    width: 120px;
   }
 
   .cart {
@@ -2377,6 +2423,15 @@ img {
   .colors {
     width: 28%;
   }
+
+  .signin-signup {
+    width: 100%;
+  }
+  
+  .signin-signup form {
+    background-color: white;
+    box-shadow: none;
+  }
 }
 
 @media only screen and (max-width: 444px) {
@@ -2386,6 +2441,10 @@ img {
 
   .logo img {
     width: 90px;
+  }
+
+  .signup-logo img {
+    width: 120px;
   }
 
   .right-box {
@@ -2460,6 +2519,14 @@ img {
 
   .logo img {
     width: 85px;
+  }
+
+  .signup-logo{
+    margin-left: 0;
+  }
+
+  .signup-logo img {
+    width: 120px;
   }
 
   #inside-content {
@@ -2565,6 +2632,10 @@ img {
 
   .logo img {
     width: 80px;
+  }
+
+  .signup-logo img {
+    width: 110px;
   }
 
   .right-box {
