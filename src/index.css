@@ -99,8 +99,9 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
-  margin-left: 82px;
+  /* margin-left: 82px; */
   cursor: pointer;
+  z-index: 999;
   transition: 0.5s;
 }
 
@@ -112,7 +113,7 @@
   padding: 0 5px;
 }
 
-.log-menu{
+.log-menu {
   position: absolute;
   top: 4.2rem;
   right: 12rem;
@@ -126,7 +127,7 @@
   transition: 0.3s ease-in-out;
 }
 
-.log-menu::before{
+.log-menu::before {
   content: "";
   position: absolute;
   background-color: black;
@@ -138,8 +139,13 @@
   z-index: -1;
 }
 
-.log-menu .btn{
+.log-menu .btn {
   margin: 10px 0;
+  transition: 0.3s ease-in-out;
+}
+
+.log-menu .btn:hover {
+  background-color: #181a1b;
 }
 
 .cart {
@@ -150,6 +156,11 @@
   font-weight: bold;
   color: #f75b5b;
   z-index: 99;
+}
+
+#cartLogo {
+  font-size: 1.9em;
+  margin-left: 15px;
 }
 
 .line {
@@ -1778,10 +1789,6 @@ img {
     width: 22%;
   }
 
-  .icons {
-    margin-left: 32px;
-  }
-
   .navbar {
     font-size: 13px;
   }
@@ -1960,12 +1967,24 @@ img {
     justify-content: space-evenly;
     flex-direction: column;
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     cursor: pointer;
-    right: 6%;
-    top: 17px;
+    left: 4%;
+    top: 18px;
     z-index: 999;
+  }
+
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-left: 70px;
+  }
+
+  .icons {
+    font-size: 18px;
   }
 
   .nav-List ul,
@@ -1980,21 +1999,18 @@ img {
 
   .nav-List {
     position: relative;
-    top: 15%;
-  }
-
-  .icons div {
-    padding: 20px;
+    top: 25%;
+    font-size: 40px;
   }
 
   .cart {
-    left: 77px;
-    top: -25px;
-    font-size: 23px;
+    left: 38px;
+    top: -13px;
+    font-size: 14px;
   }
 
-  .cart-div .fas {
-    margin-left: 0;
+  #cartLogo {
+    margin-left: 0px;
   }
 
   .menu {
@@ -2002,8 +2018,7 @@ img {
     background-color: black;
     flex-direction: column;
     align-items: center;
-    font-size: 30px;
-    top: 4%;
+    top: 0;
     left: 0;
     right: 0;
     text-align: center;
@@ -2022,6 +2037,7 @@ img {
 
   .logo img {
     width: 100px;
+    padding: 5px;
   }
 
   #inside-content {
@@ -2082,6 +2098,10 @@ img {
 }
 
 @media only screen and (max-width: 798px) {
+  .logo {
+    margin-left: 50px;
+  }
+
   #inside-content {
     flex-direction: column;
     height: 680px;
@@ -2214,8 +2234,40 @@ img {
 }
 
 @media only screen and (max-width: 537px) {
-  .navbar {
-    justify-content: flex-start;
+
+  .hamburger {
+    top: 16px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .lineOne {
+    transform: rotate(47deg) translateY(0.55rem);
+  }
+
+  .logo {
+    margin-left: 40px;
+  }
+
+  .c-span {
+    display: none;
+  }
+
+  .logo img {
+    width: 90px;
+  }
+
+  .cart {
+    left: 37px;
+    top: -11px;
+  }
+
+  .nav-sign {
+    font-size: 15px;
+  }
+
+  .cart-div {
+    font-size: 17px;
   }
 
   #inside-content {
@@ -2379,22 +2431,35 @@ img {
 
 @media only screen and (max-width: 397px) {
 
-  .navbar ul {
-    font-size: 25px;
+  .hamburger {
+    left: 6%;
+    top: 17px;
+    width: 32px;
+    height: 32px;
   }
 
-  .icons {
-    font-size: 25px;
+  .lineOne {
+    transform: rotate(47deg) translateY(0.52rem);
+    height: 2px;
   }
 
-  .icons div {
-    padding: 20px 0;
+  .lineTwo {
+    height: 2px;
+    transform: rotate(-49deg) translateY(-0.6rem);
   }
 
-  .cart {
-    font-size: 18px;
-    left: 65px;
-    top: -17px;
+  .nav-sign {
+    position: relative;
+    left: 6%;
+  }
+
+  .logo {
+    padding: 0;
+    margin-left: 45px;
+  }
+
+  .logo img {
+    width: 85px;
   }
 
   #inside-content {
@@ -2439,6 +2504,11 @@ img {
 }
 
 @media only screen and (max-width: 380px) {
+
+  .nav-List {
+    font-size: 30px;
+  }
+
   #inside-content {
     height: 620px;
   }

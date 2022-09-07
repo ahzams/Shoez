@@ -25,7 +25,6 @@ export default function Navbar({ count, page, userInfo }) {
             document.getElementById("header").style.borderRadius = "0px";
             document.getElementById("header").style.top = "0px";
         }
-
     }
 
     const handleLines = () => {
@@ -50,7 +49,6 @@ export default function Navbar({ count, page, userInfo }) {
                     <img onClick={() => { navigate("/") }} src={logo} alt="" />
                 </div>
                 <div className={`menu ${isOpen ? "move" : "move2"}`}>
-
                     <div className="nav-List">
                         <ul>
                             <li><Link className={page === 'Home' ? 'current' : ''} to="/">Home</Link></li>
@@ -60,20 +58,20 @@ export default function Navbar({ count, page, userInfo }) {
                             <li><Link className={page === 'Contact' ? 'current' : ''} to="/">Contact</Link></li>
                         </ul>
                     </div>
-                    <div className="icons nav-List">
-                        <div style={{ display: "flex", alignItems: "center", transition: "0.3s ease-in-out" }} onClick={() => navigate("/Login")} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                            <i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>
-                            {userInfo ? userInfo.username : "SIGN IN"}
-                        </div>
-                        <div className={`log-menu ${isHover ? "menu" : "disp"}`}>
-                            <button className='btn'>Login/Register</button>
-                            <div>OR</div>
-                            <button className='btn'>Guest Login</button>
-                        </div>
-                        <div className='cart-div' onClick={() => navigate("/Cart")}>
-                            <span className='cart'>{count}</span>
-                            <i className='fas fa-shopping-cart' style={{ fontSize: "1.9em", marginLeft: "15px" }}></i><span style={{ position: "relative", left: "-6px" }}>Cart</span>
-                        </div>
+                </div>
+                <div className="icons">
+                    <div className='nav-sign' style={{ display: "flex", alignItems: "center", transition: "0.3s ease-in-out" }} onMouseEnter={() => setIsHover(true)}>
+                        <i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>
+                        {userInfo ? userInfo.username : "SIGN IN"}
+                    </div>
+                    <div className={`log-menu ${isHover ? "menu" : "disp"}`} onMouseLeave={() => setIsHover(false)}>
+                        <button className='btn' onClick={() => navigate("/Login")}>Login/Register</button>
+                        <div>OR</div>
+                        <button className='btn'>Guest Login</button>
+                    </div>
+                    <div className='cart-div' onClick={() => navigate("/Cart")}>
+                        <span className='cart'>{count}</span>
+                        <i className='fas fa-shopping-cart' id='cartLogo'></i><span className='c-span' style={{ position: "relative", left: "-6px" }}>Cart</span>
                     </div>
                 </div>
                 <div className="hamburger" onClick={handleLines}>
