@@ -79,7 +79,7 @@ export default function Cart({ id, userInfo, change, setChange, count, setCount,
             <h3>{shoename}</h3>
             <h3 className="price">&#8377; {price}</h3>
           </div>
-          <div style={{ display: 'flex' }}>
+          <div className='cart-funcs'>
             <div className='trash' onClick={handleRemove}>
               <i className='fa fa-trash'></i>Remove
             </div>

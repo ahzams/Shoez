@@ -22,7 +22,6 @@ export default function Hero() {
                             feet won't feel any fatigue!</h3>
                     <div className="buttons">
                         <button className="btn">Buy Sneakers</button>
-                        <button className="btn btn2">Subscribe</button>
                     </div>
                 </div>
                 <div className="right-box">

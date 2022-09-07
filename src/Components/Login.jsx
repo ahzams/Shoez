@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import React, { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import logo from '../assets/Shoez-logos_black.png'
 import { database } from '../firebaseConfig'
 
@@ -23,7 +23,7 @@ export default function Login({userInfo, setUserInfo}) {
         )
 
         const querySnapshotQ = await getDocs(q);
-        if (querySnapshotQ._snapshot.docChanges.length != 0) {
+        if (querySnapshotQ._snapshot.docChanges.length !== 0) {
             querySnapshotQ.forEach((doc) => {
                 setUserInfo(doc.data().data);
                 console.log(doc.data().data)
@@ -37,7 +37,7 @@ export default function Login({userInfo, setUserInfo}) {
         }
 
         const querySnapshotP = await getDocs(p);
-        if (querySnapshotP._snapshot.docChanges.length != 0) {
+        if (querySnapshotP._snapshot.docChanges.length !== 0) {
             querySnapshotP.forEach((doc) => {
                 setUserInfo(doc.data().data);
                 console.log(doc.data().data)
@@ -67,6 +67,9 @@ export default function Login({userInfo, setUserInfo}) {
 
                     <div className="login-btn">
                         <button className="btn" type='button' onClick={handleLogin}>Login</button>
+                    </div>
+                    <div className="guest-btn">
+                        <button className="btn" type='button'>Guest User Credentials</button>
                     </div>
 
                     <div className="platforms">

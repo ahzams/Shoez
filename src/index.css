@@ -258,18 +258,6 @@
   background-color: #f75b5bd0;
 }
 
-.btn2 {
-  box-shadow: 0 0 0 !important;
-  border: 1px solid white;
-  background-color: #181a1b;
-  transition: all 0.5s;
-}
-
-.btn2:hover {
-  background-color: #f75b5b;
-  border: none;
-}
-
 .right-box {
   text-align: right;
   font-size: 16em;
@@ -687,7 +675,7 @@
 
 .search-bar {
   position: absolute;
-  right: 6%;
+  right: 3.5%;
   top: -38px;
   width: 20.5%;
   /* border: 1px solid rgba(128, 128, 128, 0.539); */
@@ -833,7 +821,7 @@ hr {
 .color-type {
   height: 35px;
   width: 35px;
-  border: 1px solid rgba(0, 0, 0, 0.243);
+  border: 1px solid rgba(0, 0, 0, 0.132);
   border-radius: 20px;
   cursor: pointer;
 }
@@ -1177,6 +1165,11 @@ form h1 {
   /* border: 1px solid black; */
   padding: 10px 14px;
   margin: 12px 0;
+}
+
+.guest-btn {
+  padding: 0px 14px;
+  margin: 0 0 15px 0;
 }
 
 .signin-signup .btn {
@@ -1580,6 +1573,10 @@ img {
   left: 1%;
 }
 
+.cart-funcs{
+  display: flex;
+}
+
 .q-input {
   width: 50px;
 }
@@ -1719,6 +1716,10 @@ img {
   .cart-container {
     margin: 120px 50px;
   }
+
+  .search-bar{
+    width: 22%;
+  }
 }
 
 @media only screen and (max-width: 1346px) {
@@ -1749,6 +1750,10 @@ img {
     flex-direction: column;
   }
 
+  .back{
+    left: 3%;
+  }
+
   .addLeft {
     margin: 0;
   }
@@ -1771,6 +1776,10 @@ img {
 
   .summary {
     padding-bottom: 90px;
+  }
+
+  .search-bar{
+    width: 25%;
   }
 }
 
@@ -1821,6 +1830,10 @@ img {
     position: static;
     display: flex;
     justify-content: center;
+  }
+
+  .search-bar{
+    width: 28%;
   }
 }
 
@@ -2021,6 +2034,10 @@ img {
     font-size: 14px;
   }
 
+  .search-bar{
+    width: 250px;
+  }
+
   #cartLogo {
     margin-left: 0px;
   }
@@ -2203,6 +2220,32 @@ img {
     padding: 0 25px;
     font-size: 14px;
   }
+
+  .back h2 {
+    font-size: 35px;
+  }
+
+  .back span {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 713px) {
+  .cart-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-funcs{
+    flex-direction: column;
+  }
+
+  .q-container{
+    position: static;
+    justify-content: flex-start;
+    padding: 10px 0;
+  }
+
 }
 
 @media only screen and (max-width: 684px) {
@@ -2268,6 +2311,10 @@ img {
   .form-container {
     margin: 0;
     padding: 0;
+  }
+
+  .cartRight {
+    font-size: 13px;
   }
 }
 
@@ -2409,6 +2456,14 @@ img {
     margin: 20px 0;
   }
 
+  .cartLeft {
+    width: 50%;
+  }
+
+  #shop-items{
+    margin: 60px 20px;
+  }
+
   .footer-box {
     margin: 20px 23px;
   }
@@ -2431,6 +2486,38 @@ img {
   .signin-signup form {
     background-color: white;
     box-shadow: none;
+  }
+
+  .signup-logo {
+    margin-bottom: 0;
+  }
+
+  .cartLeft {
+    width: 60%;
+  }
+
+  .top-func {
+    flex-direction: column-reverse;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 0 20px;
+    justify-content: center;
+  }
+
+  .search-bar input{
+    width: 100%;
+  }
+
+  .filter-down{
+    margin: 15px 0;
+    padding: 15px 15px 0 15px;
+    width: 100%;
+  }
+
+  .filter-down .btn {
+    width: 100%;
   }
 }
 
@@ -2486,13 +2573,17 @@ img {
   .colors {
     width: 26.5%;
   }
+
+  .cart-container{
+    margin: 120px 30px;
+  }
 }
 
 @media only screen and (max-width: 397px) {
 
   .hamburger {
-    left: 6%;
-    top: 17px;
+    left: 5%;
+    top: 16px;
     width: 32px;
     height: 32px;
   }
@@ -2512,13 +2603,17 @@ img {
     left: 6%;
   }
 
+  .card {
+    flex: 0 0 100%;
+  }
+
   .logo {
     padding: 0;
     margin-left: 45px;
   }
 
   .logo img {
-    width: 85px;
+    width: 90px;
   }
 
   .signup-logo{
@@ -2543,14 +2638,8 @@ img {
     width: 15%;
   }
 
-  .left-box h2,
-  h3,
-  .buttons {
-    margin-left: 45px;
-  }
-
   .right-box {
-    top: 1rem;
+    top: 2rem;
   }
 
   .right-box img {
@@ -2563,6 +2652,24 @@ img {
 
   #discount {
     font-size: 10px;
+  }
+
+  .back span {
+    font-size: 35px;
+  }
+
+  .back h2{
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .cart-container{
+    margin: 90px 20px;
+  }
+
+  .q-container{
+    position: relative;
+    left: -13px;
   }
 
   .footer-box {
