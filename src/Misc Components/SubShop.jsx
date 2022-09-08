@@ -61,12 +61,12 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                         </button>
                     </div >
                     <div className='search-bar'>
-                        <input type="text" placeholder='Search' />
                         <button className='search-btn'>
                             <span className="material-icons-outlined">
                                 search
                             </span>
                         </button>
+                        <input type="text" placeholder='Search' />
                     </div>
                 </div>
                 <div className='section-container'>

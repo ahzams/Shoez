@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import bg1 from '../assets/bg-1.png'
 
 export default function Hero() {
+
+    const navigate = useNavigate()
     return (
         <div>
             <section id="inside-content">
@@ -21,7 +24,7 @@ export default function Hero() {
                         lifestyle!<br />Your
                             feet won't feel any fatigue!</h3>
                     <div className="buttons">
-                        <button className="btn">Buy Sneakers</button>
+                        <button className="btn" onClick={() => navigate("/Shop")}>Buy Sneakers</button>
                     </div>
                 </div>
                 <div className="right-box">
