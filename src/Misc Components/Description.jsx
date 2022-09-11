@@ -5,12 +5,15 @@ import Descard from './Descard'
 import { useParams } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import Spinner from './Spinner';
+import { motion } from 'framer-motion';
 
-export default function Description({userInfo, count, setCount, page}) {
+export default function Description({ userInfo, count, setCount, page }) {
 
     const { id } = useParams()
     // console.log(id)
     const [desc, setDesc] = useState([])
+    const [loading, setLoading] = useState(false)
 
     // const fetchDesc = async () => {
     //     const querySnapshot = await getDocs(collection(database, "shoesdescription"));
@@ -42,19 +45,28 @@ export default function Description({userInfo, count, setCount, page}) {
 
     useEffect(() => {
         fetchDesc()
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000);
     }, [])
 
     return (
-        <div>
-            <Navbar count={count} userInfo={userInfo} page={page}/>
-            {/* <h1>{JSON.stringify(name)}</h1>
-            <h1>{JSON.stringify(id)}</h1> */}
+        <>
             {
-                desc && desc.map((element, i) => {
-                    return <Descard id={id} userInfo={userInfo} key={i} imageArray={element.images} shoename={element.name} sizeArray={element.sizes} count={count} setCount={setCount} />
-                })
+                loading ?
+                    <Spinner loading={loading} />
+                    :
+                    <motion.div initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: window.innerWidth }} transition={{ duration: 0.6 }}>
+                        <Navbar count={count} userInfo={userInfo} page={page} />
+                        {
+                            desc && desc.map((element, i) => {
+                                return <Descard id={id} userInfo={userInfo} key={i} imageArray={element.images} shoename={element.name} sizeArray={element.sizes} count={count} setCount={setCount} />
+                            })
+                        }
+                        <Footer />
+                    </motion.div>
             }
-            <Footer />
-        </div>
+        </>
     )
 }

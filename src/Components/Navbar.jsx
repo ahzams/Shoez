@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import logo from '../assets/Shoez-logos_white.png'
 import { Link, useNavigate } from "react-router-dom"
+import { animate, motion } from 'framer-motion'
 
 export default function Navbar({ count, page, userInfo }) {
 
@@ -41,13 +42,18 @@ export default function Navbar({ count, page, userInfo }) {
         )
     }
 
+    const variants = {
+        open: { opacity: 1, x: 0 },
+        closed: { opacity: 0, x: "-100%" },
+      }
+
     return (
         <div className='nav-Section'>
             <nav className="navbar" id='header'>
                 <div className="logo">
                     <img onClick={() => { navigate("/") }} src={logo} alt="" />
                 </div>
-                <div className={`menu ${isOpen ? "move" : "move2"}`}>
+                <motion.div className={`menu ${isOpen ? "move" : "move2"}`}>
                     <div className="nav-List">
                         <ul>
                             <li><Link className={page === 'Home' ? 'current' : ''} to="/">Home</Link></li>
@@ -57,7 +63,7 @@ export default function Navbar({ count, page, userInfo }) {
                             <li><Link className={page === 'Contact' ? 'current' : ''} to="/">Contact</Link></li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
                 <div className="icons">
                     <div className='nav-sign' style={{ display: "flex", alignItems: "center", transition: "0.3s ease-in-out" }} onClick={() => navigate("/Login")}>
                         <i className="fas fa-user-circle" style={{ fontSize: "1.6em", padding: "0px", borderRadius: "20px", marginRight: "5px" }}></i>

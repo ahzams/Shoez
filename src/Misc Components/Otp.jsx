@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Otp({ verify, setVerify, setDisp }) {
 
@@ -31,7 +32,7 @@ export default function Otp({ verify, setVerify, setDisp }) {
     }
 
     return (
-        <div className='otp-modal'>
+        <motion.div className='otp-modal' initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: window.innerWidth }} transition={{ duration: 0.6 }}>
             <form onSubmit={codeVerify}>
                 <div className='otp-head'>
                     <h2>Verify your Mobile Number</h2>
@@ -58,6 +59,6 @@ export default function Otp({ verify, setVerify, setDisp }) {
                     <button className='btn' type='submit'>Verify</button>
                 </div>
             </form>
-        </div>
+        </motion.div>
     )
 }

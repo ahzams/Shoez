@@ -25,6 +25,23 @@
   border-radius: 5px;
 }
 
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+}
+
+.spin{
+  position: absolute;
+  top: 45%;
+  left: 48%;
+}
+
 /* Navigation Bar */
 
 .nav-Section {
@@ -261,6 +278,7 @@
 .right-box {
   text-align: right;
   font-size: 16em;
+  z-index: 9999;
   overflow: hidden;
 }
 
@@ -653,10 +671,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 5px 0;
 }
 
 .filter-down {
-  display: none;
+  display: flex;
+  position: absolute;
+  top: -34px;
+  right: 27%;
+}
+
+.filter-down .btn {
+  border: 1px solid black;
+  background-color: #f4f3ee;
+  color: black;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 17px;
 }
 
 .search-bar {
@@ -702,7 +735,7 @@
 }
 
 .search-btn:hover {
-  background-color: #c4c2c2;
+  background-color: #d3d0d0;
 }
 
 .search-btn span {
@@ -775,6 +808,7 @@ hr {
 .filter-btn .btn {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   width: 100%;
   transition: 0.3s ease-in-out;
@@ -1626,7 +1660,7 @@ img {
   width: 30%;
   height: 0;
   position: sticky;
-  top: 10rem;
+  top: 9rem;
 }
 
 .cart-sub {
@@ -1775,6 +1809,10 @@ img {
 
   .search-bar{
     width: 25%;
+  }
+
+  .filter-down{
+    right: 32%;
   }
 }
 
@@ -1942,19 +1980,8 @@ img {
     width: 100%;
   }
 
-  .filter-down {
-    display: flex;
-  }
-
-  .filter-down .btn {
-    border: 1px solid black;
-    background-color: #f4f3ee;
-    color: black;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 17px;
+  .filter-down{
+    position: static;
   }
 
   .filter-down span {
@@ -2045,6 +2072,7 @@ img {
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     text-align: center;
     width: 100vw;
     height: 100%;

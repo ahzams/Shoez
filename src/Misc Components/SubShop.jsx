@@ -22,6 +22,54 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
         // setShoes([...shoes, airMax])
     }
 
+    const fetchCost1 = async () => {
+        const querySnapshot = await getDocs(
+          collection(database, "shoesdatabase")
+        );
+        const array = [];
+        querySnapshot.forEach((doc) => {
+          let r = doc.data().item.price;
+          let price1 = r.replace(",", "");
+          console.log(price1);
+          if(Number(price1) > Number(8000) && Number(price1) < Number(10000)) {
+              array.push(doc.data().item);
+          }
+        });
+        setShow(array);
+      };
+  
+      const fetchCost2 = async () => {
+        const querySnapshot = await getDocs(
+          collection(database, "shoesdatabase")
+        );
+        const array = [];
+        querySnapshot.forEach((doc) => {
+          let r = doc.data().item.price;
+          let price1 = r.replace(",", "");
+          console.log(price1);
+          if (Number(price1) > Number(10000) && Number(price1) < Number(15000)) {
+            array.push(doc.data().item);
+          }
+        });
+        setShow(array);
+      };
+  
+      const fetchCost3 = async () => {
+        const querySnapshot = await getDocs(
+          collection(database, "shoesdatabase")
+        );
+        const array = [];
+        querySnapshot.forEach((doc) => {
+          let r = doc.data().item.price;
+          let price1 = r.replace(",", "");
+          console.log(price1);
+          if (Number(price1) > Number(15000)) {
+            array.push(doc.data().item);
+          }
+        });
+        setShow(array);
+      };
+
     useEffect(() => {
         fetchShoes()
         setShow(shoes);
@@ -70,7 +118,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                     </div>
                 </div>
                 <div className='section-container'>
-                    <div className={`section1 scrollWidth ${isOpen ? "move3" : "disp"}`}>
+                    <div className={`section1 scrollWidth ${isOpen ? "disp" : "move3"}`}>
                         <h3 className="f-weight space2">Filter by price</h3>
                         <div className="filter">
                             <div className='price-filter'>
@@ -86,15 +134,15 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                 <input type="number" className='mob' max={25000} /> */}
                                 <div className='price-input'>
                                     <input type="checkbox" />
-                                    <li>&#8377; 8,000 - &#8377; 10,000</li>
+                                    <li onClick={fetchCost1}>&#8377; 8,000 - &#8377; 10,000</li>
                                 </div>
                                 <div className='price-input'>
                                     <input type="checkbox" />
-                                    <li>&#8377; 10,000 - &#8377; 15,000</li>
+                                    <li onClick={fetchCost2}>&#8377; 10,000 - &#8377; 15,000</li>
                                 </div>
                                 <div className='price-input'>
                                     <input type="checkbox" />
-                                    <li>&#62; 15,000</li>
+                                    <li onClick={fetchCost3}>&#62; 15,000</li>
                                 </div>
                             </div>
                             <div className="filter-btn space2">
@@ -178,7 +226,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                                             <h6>Yellow</h6>
                                         </div>
                                         <div className='colors'>
-                                            <img src={multi} className="color-type" style={{height: "auto", width: "35px", borderRadius: "0", border: "none"}} />
+                                            <img src={multi} className="color-type" style={{ height: "auto", width: "35px", borderRadius: "0", border: "none" }} />
                                             <h6>Multi-Color</h6>
                                         </div>
                                     </div>

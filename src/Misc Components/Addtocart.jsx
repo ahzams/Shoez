@@ -4,10 +4,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { database } from '../firebaseConfig'
 import Cart from './Cart'
+import Spinner from './Spinner'
+import { motion } from 'framer-motion'
 
 export default function Addtocart({ userInfo, count, setCount }) {
 
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const [subtotal, setSubTotal] = useState(0)
     const [change, setChange] = useState(false);
@@ -35,52 +38,66 @@ export default function Addtocart({ userInfo, count, setCount }) {
         fetchCartitems()
     }, [change])
 
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+    }, [])
+
     return (
-        <div className='cart-container'>
-            <div className='back'>
-                <span className="material-symbols-outlined"  onClick={() => navigate(-1)}>
-                    keyboard_backspace
-                </span>
-                <h2>Cart</h2>
-            </div>
-            <div className='addLeft'>
-                <div>
-                    {
-                        cartItems && cartItems.map((element, i) => {
-                            return <Cart userInfo={userInfo} key={i} id={element.shoeid} count={count} setCount={setCount} imageUrl={element.imageurl} shoename={element.shoename} price={element.price} setChange={setChange} change={change} />
-                        })
-                    }
-                </div>
-            </div>
-            <div className='addRight'>
-                <div className='summary'>
-                    <div className="sum-head">
-                        <h2>Summary</h2>
-                    </div>
-                    <div className='cart-sub'>
-                        <h3>Subtotal</h3>
-                        <h3 className='price'>&#8377;
-                            {subtotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00
-                        </h3>
-                    </div>
-                    <div className='cart-sub'>
-                        <h3>Estimated Delivery</h3>
-                        <h3 className='price'>&#8377; 50.00</h3>
-                    </div>
-                    <div className='cart-sub'>
-                        <h3>Total</h3>
-                        <h3 className='price'>&#8377;
-                            {(Number(subtotal) + Number(50))
-                                .toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                            .00
-                        </h3>
-                    </div>
-                </div>
-                <div className="summary-btns">
-                    <button className="btn">Proceed to Checkout</button>
-                </div>
-            </div>
-        </div>
+        <>
+            {
+                loading ?
+                    <Spinner loading={loading} />
+                    :
+                    <motion.div className='cart-container' initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: window.innerWidth }} transition={{ duration: 0.6 }}>
+                        <div className='back'>
+                            <span className="material-symbols-outlined" onClick={() => navigate(-1)}>
+                                keyboard_backspace
+                            </span>
+                            <h2>Cart</h2>
+                        </div>
+                        <div className='addLeft'>
+                            <div>
+                                {
+                                    cartItems && cartItems.map((element, i) => {
+                                        return <Cart userInfo={userInfo} key={i} id={element.shoeid} count={count} setCount={setCount} imageUrl={element.imageurl} shoename={element.shoename} price={element.price} setChange={setChange} change={change} />
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <div className='addRight'>
+                            <div className='summary'>
+                                <div className="sum-head">
+                                    <h2>Summary</h2>
+                                </div>
+                                <div className='cart-sub'>
+                                    <h3>Subtotal</h3>
+                                    <h3 className='price'>&#8377;
+                                        {subtotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00
+                                    </h3>
+                                </div>
+                                <div className='cart-sub'>
+                                    <h3>Estimated Delivery</h3>
+                                    <h3 className='price'>&#8377; 50.00</h3>
+                                </div>
+                                <div className='cart-sub'>
+                                    <h3>Total</h3>
+                                    <h3 className='price'>&#8377;
+                                        {(Number(subtotal) + Number(50))
+                                            .toString()
+                                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                        .00
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="summary-btns">
+                                <button className="btn">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </motion.div>
+            }
+        </>
     )
 }

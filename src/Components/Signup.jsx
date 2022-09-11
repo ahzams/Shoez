@@ -5,9 +5,13 @@ import logo from '../assets/Shoez-logos_black.png'
 import Otp from '../Misc Components/Otp'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { database } from '../firebaseConfig'
+import Spinner from '../Misc Components/Spinner'
+import { motion } from 'framer-motion'
 
 export default function Signup({ verify, setVerify }) {
 
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const [disp, setDisp] = useState(false)
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
@@ -62,7 +66,7 @@ export default function Signup({ verify, setVerify }) {
         )
 
         const querySnapshot = await getDocs(q);
-        if (querySnapshot._snapshot.docChanges.length!=0) {
+        if (querySnapshot._snapshot.docChanges.length != 0) {
             console.log("username already exists")
         }
     }
@@ -104,7 +108,6 @@ export default function Signup({ verify, setVerify }) {
 
     }
 
-
     useEffect(() => {
         if (confirmPass === pass && confirmPass.length >= 7) {
             setConfirmPassTick(true)
@@ -121,67 +124,77 @@ export default function Signup({ verify, setVerify }) {
         }
     }, [confirmPass, pass])
 
-
-
-    const navigate = useNavigate()
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+    }, [])
 
     return (
-        <div className='form-container'>
-            <div className="signin-signup">
-                <div className="logo signup-logo">
-                    <img onClick={() => { navigate("/") }} src={logo} alt="" />
-                </div>
-                <form action="" className="signup-form" id="sign-up">
-                    <h1>Create Account</h1>
-                    <div className="form-control">
-                        <i className="fas fa-user"></i>
-                        <input className="input-text" type="text" placeholder="Username" onChange={(e) => handleUsername(e.target.value)}/>
-                    </div>
-                    <div className="form-control mob-no">
-                        <i className="fas fa-phone-alt"></i>
-                        <input className="input-text mob" type="number" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Mobile" />
-                        <span className={`${verify ? "material-symbols-outlined tick" : "disp"}`}>
-                            check
-                        </span>
-                        <div className="verify">
-                            <a id="verify-btn" onClick={onSignInSubmit}>Verify</a>
+        <>
+            {
+                loading ?
+                    <Spinner loading={loading} />
+                    :
+                    <motion.div className='form-container' initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: window.innerWidth }} transition={{ duration: 0.6 }}>
+                        <div className="signin-signup">
+                            <div className="logo signup-logo">
+                                <img onClick={() => { navigate("/") }} src={logo} alt="" />
+                            </div>
+                            <form action="" className="signup-form" id="sign-up">
+                                <h1>Create Account</h1>
+                                <div className="form-control">
+                                    <i className="fas fa-user"></i>
+                                    <input className="input-text" type="text" placeholder="Username" onChange={(e) => handleUsername(e.target.value)} />
+                                </div>
+                                <div className="form-control mob-no">
+                                    <i className="fas fa-phone-alt"></i>
+                                    <input className="input-text mob" type="number" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Mobile" />
+                                    <span className={`${verify ? "material-symbols-outlined tick" : "disp"}`}>
+                                        check
+                                    </span>
+                                    <div className="verify">
+                                        <a id="verify-btn" onClick={onSignInSubmit}>Verify</a>
+                                    </div>
+                                </div>
+                                <div className="form-control">
+                                    <i className="fas fa-envelope"></i>
+                                    <input className="input-text" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                                </div>
+                                <div className="form-control">
+                                    <i className="fas fa-lock"></i>
+                                    <input className="input-text" value={pass} onChange={(e) => { setPass(e.target.value) }} type="password" placeholder="Password" />
+                                    <span className={`${passTick ? "material-symbols-outlined tick" : "disp"}`}>
+                                        check
+                                    </span>
+                                </div>
+                                <div className="form-control">
+                                    <i className="fas fa-lock"></i>
+                                    <input className="input-text" value={confirmPass} onChange={(e) => { setConfirmPass(e.target.value) }} type="password" placeholder="Confirm Password" />
+                                    <span className={`${confirmPassTick ? "material-symbols-outlined tick" : "disp"}`}>
+                                        check
+                                    </span>
+                                </div>
+
+                                <div className="login-btn">
+                                    <button className="btn" type='button' onClick={handleSubmit}>Create an Account</button>
+                                </div>
+
+                                <div className="platforms">
+                                    <h4 id="signin-link" onClick={() => navigate("/Login")}>Already have an account?Sign in.</h4>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                    <div className="form-control">
-                        <i className="fas fa-envelope"></i>
-                        <input className="input-text" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                    </div>
-                    <div className="form-control">
-                        <i className="fas fa-lock"></i>
-                        <input className="input-text" value={pass} onChange={(e) => { setPass(e.target.value) }} type="password" placeholder="Password" />
-                        <span className={`${passTick ? "material-symbols-outlined tick" : "disp"}`}>
-                            check
-                        </span>
-                    </div>
-                    <div className="form-control">
-                        <i className="fas fa-lock"></i>
-                        <input className="input-text" value={confirmPass} onChange={(e) => { setConfirmPass(e.target.value) }} type="password" placeholder="Confirm Password" />
-                        <span className={`${confirmPassTick ? "material-symbols-outlined tick" : "disp"}`}>
-                            check
-                        </span>
-                    </div>
-
-                    <div className="login-btn">
-                        <button className="btn" type='button' onClick={handleSubmit}>Create an Account</button>
-                    </div>
-
-                    <div className="platforms">
-                        <h4 id="signin-link" onClick={() => navigate("/Login")}>Already have an account?Sign in.</h4>
-                    </div>
-                </form>
-            </div>
-            <div className={`${disp ? "otp" : "disp"}`}>
-            {/* <div className="otp"> */}
-                <Otp setDisp={setDisp} verify={verify} setVerify={setVerify} />
-            </div>
-            {/* <Link className='link' to="/">
+                        <div className={`${disp ? "otp" : "disp"}`}>
+                            {/* <div className="otp"> */}
+                            <Otp setDisp={setDisp} verify={verify} setVerify={setVerify} />
+                        </div>
+                        {/* <Link className='link' to="/">
                 Back to Home?
             </Link> */}
-        </div>
+                    </motion.div>
+            }
+        </>
     )
 }

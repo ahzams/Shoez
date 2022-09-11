@@ -1,13 +1,17 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import logo from '../assets/Shoez-logos_black.png'
 import { database } from '../firebaseConfig'
+import Spinner from '../Misc Components/Spinner'
+import { motion } from 'framer-motion'
 
-export default function Login({userInfo, setUserInfo}) {
+export default function Login({ userInfo, setUserInfo }) {
 
     const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(false)
     const [user, setUser] = useState("")
     const [pass, setPass] = useState("")
 
@@ -48,41 +52,56 @@ export default function Login({userInfo, setUserInfo}) {
         }
     }
 
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000);
+    }, [])
+
+
     return (
-        <div className='form-container'>
-            <div className="logo signup-logo">
-                <img onClick={() => { navigate("/") }} src={logo} alt="" />
-            </div>
-            <div className="signin-signup" id="login">
-                <form action="" className="signin-form" id="sign-in">
-                    <h1>Sign in</h1>
-                    <div className="form-control">
-                        <i className="fas fa-user"></i>
-                        <input className="input-text" type="text" value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username or Email" />
-                    </div>
-                    <div className="form-control">
-                        <i className="fas fa-lock"></i>
-                        <input className="input-text" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="Password" />
-                    </div>
-
-                    <div className="login-btn">
-                        <button className="btn" type='button' onClick={handleLogin}>Login</button>
-                    </div>
-                    <div className="guest-btn">
-                        <button className="btn" type='button'>Guest User Credentials</button>
-                    </div>
-
-                    <div className="platforms">
-                        <h5>New to Shoez?</h5>
-                        <div className="create-btn">
-                            <button className="btn" onClick={() => navigate("/Signup")}>Create your Shoez Account</button>
+        <>
+            {
+                loading ?
+                    <Spinner loading={loading} />
+                    :
+                    <motion.div className='form-container' initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ y: window.innerWidth }} transition={{ duration: 0.6 }}>
+                        <div className="logo signup-logo">
+                            <img onClick={() => { navigate("/") }} src={logo} alt="" />
                         </div>
-                    </div>
-                </form>
-            </div>
-            {/* <Link className='link' to="/">
+                        <div className="signin-signup" id="login">
+                            <form action="" className="signin-form" id="sign-in">
+                                <h1>Sign in</h1>
+                                <div className="form-control">
+                                    <i className="fas fa-user"></i>
+                                    <input className="input-text" type="text" value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username or Email" />
+                                </div>
+                                <div className="form-control">
+                                    <i className="fas fa-lock"></i>
+                                    <input className="input-text" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="Password" />
+                                </div>
+
+                                <div className="login-btn">
+                                    <button className="btn" type='button' onClick={handleLogin}>Login</button>
+                                </div>
+                                <div className="guest-btn">
+                                    <button className="btn" type='button'>Guest User Credentials</button>
+                                </div>
+
+                                <div className="platforms">
+                                    <h5>New to Shoez?</h5>
+                                    <div className="create-btn">
+                                        <button className="btn" onClick={() => navigate("/Signup")}>Create your Shoez Account</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {/* <Link className='link' to="/">
                 Back to Home?
             </Link> */}
-        </div>
+                    </motion.div>
+            }
+        </>
     )
 }
