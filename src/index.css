@@ -278,7 +278,6 @@
 .right-box {
   text-align: right;
   font-size: 16em;
-  z-index: 9999;
   overflow: hidden;
 }
 
