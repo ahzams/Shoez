@@ -691,6 +691,10 @@
   padding: 8px 17px;
 }
 
+.filter-down .btn span {
+  margin-right: 4px;
+}
+
 .search-bar {
   position: absolute;
   right: 5%;
@@ -847,9 +851,10 @@ hr {
 }
 
 .color-type {
+  position: relative;
   height: 35px;
   width: 35px;
-  border: 1px solid rgba(0, 0, 0, 0.132);
+  border: 1px solid rgba(0, 0, 0, 0.195);
   border-radius: 20px;
   cursor: pointer;
 }
@@ -1260,6 +1265,18 @@ form h1 {
   color: green;
   font-size: 25px;
   margin-right: 10px;
+}
+
+.selTick::before{
+  content: '\2713';
+  position: absolute;
+  left: 9px;
+  top: 1.5px;
+  color: white;
+  height: 100%;
+  font-size: 20px;
+  width: 100%;
+  z-index: 2;
 }
 
 .disp {

@@ -9,6 +9,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
 
     const [show, setShow] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
+    const [select, setSelect] = useState(false)
 
     const fetchShoes = async () => {
         const querySnapshot = await getDocs(collection(database, "shoesdatabase"));
@@ -105,7 +106,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                             <span class="material-symbols-outlined">
                                 tune
                             </span>
-                            Filter
+                            {isOpen ? "Show Filters" : "Hide Filters"}
                         </button>
                     </div >
                     <div className='search-bar'>
@@ -145,9 +146,9 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                                     <li onClick={fetchCost3}>&#62; 15,000</li>
                                 </div>
                             </div>
-                            <div className="filter-btn space2">
+                            {/* <div className="filter-btn space2">
                                 <button className="btn"><span className="material-icons">filter_alt</span>Filter</button>
-                            </div>
+                            </div> */}
                             <hr />
                             <div className="collection">
                                 <h3 className="space2 f-weight">Filter by brand</h3>
@@ -174,9 +175,10 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce })
                             <div className='filter-color'>
                                 <h3 className='space2 f-weight' style={{ marginBottom: "5px" }}>Filter by Color</h3>
                                 <div className='color-container'>
+                                    
                                     <div className="color-box">
                                         <div className='colors'>
-                                            <div className="color-type" style={{ backgroundColor: "black" }}></div>
+                                            <div className={`${select ? "color-type selTick" : "color-type"}`} style={{ backgroundColor: "black" }} onClick={() => setSelect(!select)}></div>
                                             <h6>Black</h6>
                                         </div>
                                         <div className='colors'>
