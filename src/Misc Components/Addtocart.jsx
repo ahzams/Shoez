@@ -51,7 +51,7 @@ export default function Addtocart({ userInfo, count, setCount }) {
                 loading ?
                     <Spinner loading={loading} />
                     :
-                    <motion.div className='cart-container' initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: window.innerWidth }} transition={{ duration: 0.6 }}>
+                    <motion.div className='cart-container'>
                         <div className='back'>
                             <span className="material-symbols-outlined" onClick={() => navigate(-1)}>
                                 keyboard_backspace
@@ -59,13 +59,12 @@ export default function Addtocart({ userInfo, count, setCount }) {
                             <h2>Cart</h2>
                         </div>
                         <div className='addLeft'>
-                            <div>
                                 {
                                     cartItems && cartItems.map((element, i) => {
                                         return <Cart userInfo={userInfo} key={i} id={element.shoeid} count={count} setCount={setCount} imageUrl={element.imageurl} shoename={element.shoename} price={element.price} setChange={setChange} change={change} />
                                     })
                                 }
-                            </div>
+
                         </div>
                         <div className='addRight'>
                             <div className='summary'>
