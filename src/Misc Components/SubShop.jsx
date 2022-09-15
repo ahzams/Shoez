@@ -402,7 +402,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce, n
                                             <div
                                                 className={
                                                     color === "White"
-                                                        ? "color-type selTick"
+                                                        ? "color-type bTick"
                                                         : "color-type"
                                                 }
                                                 style={{ backgroundColor: "white" }}
