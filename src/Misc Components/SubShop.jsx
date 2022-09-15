@@ -192,7 +192,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce, n
                         </button>
                     </div >
                     <div className='search-bar'>
-                        <button className='search-btn'>
+                        <button className='search-btn' onClick={handlesearch}>
                             <span className="material-icons-outlined">
                                 search
                             </span>
