@@ -859,6 +859,12 @@ hr {
   cursor: pointer;
 }
 
+.color-type img {
+  position: absolute;
+  width: 34px;
+  height: auto;
+}
+
 .colors {
   margin: 5px 8px;
   width: 25%;

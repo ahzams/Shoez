@@ -38,7 +38,7 @@ function App() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.id, " => ", doc.data());
-      array.push(doc.data().item)
+      array.push(doc.data().data)
     });
     setShoes(array)
     // setShoes([...shoes, airMax])
