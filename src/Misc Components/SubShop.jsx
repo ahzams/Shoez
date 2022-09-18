@@ -224,7 +224,7 @@ export default function SubShop({ shoes, setShoes, airMax, nikeDunk, airForce, n
                                     <li>&#8377; 10,000 - &#8377; 15,000</li>
                                 </div>
                                 <div className='price-input'>
-                                    <input type="checkbox" checked={check2} onChange={() => handlecheck(3)} />
+                                    <input type="checkbox" checked={check3} onChange={() => handlecheck(3)} />
                                     <li>&#62; 15,000</li>
                                 </div>
                             </div>

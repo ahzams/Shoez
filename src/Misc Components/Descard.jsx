@@ -81,7 +81,7 @@ export default function Descard({ userInfo, imageArray, shoename, id, count, set
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             console.log(doc.data().item)
-            setCart(doc.data().item)
+            setCart(doc.data().data)
         })
     }
 
