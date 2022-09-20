@@ -85,9 +85,9 @@ export default function Login({ userInfo, setUserInfo }) {
                                 <div className="login-btn">
                                     <button className="btn" type='button' onClick={handleLogin}>Login</button>
                                 </div>
-                                <div className="guest-btn">
+                                {/* <div className="guest-btn">
                                     <button className="btn" type='button'>Guest User Credentials</button>
-                                </div>
+                                </div> */}
 
                                 <div className="platforms">
                                     <h5>New to Shoez?</h5>
